@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>VueJS</title>
+  <link rel="stylesheet" href="CSS/bootstrap.min.css">
+  <link rel="stylesheet" href="CSS/styles.css">
+  <script src="JS/vue.js"></script>
+</head>
+<body>
+<div class="wrapper">
+  <div class="sample">
+    <input type="text"
+           v-on:input="name = $event.target.value"
+           v-bind:value="name">
+
+    <hr>
+    <button class="btn btn-success"
+            v-on:click="showName = !showName">
+      Toggle
+    </button>
+    <button class="btn btn-primary"
+            v-on:click="toggleName">
+      Toggle2
+    </button>
+    <h2 v-show="showName"> Hello, {{ name }} </h2>
+    <h2 v-if="showName"> Hello, {{ name }} </h2>
+    <div v-else>Name is hidden</div>
+  </div>
+</div>
+<script>
+  let sample = new Vue({
+    el: '.sample',
+    data: {
+      name: 'Default',
+      showName: false
+    },
+    methods: {
+      toggleName() {
+        this.showName = !this.showName;
+      }
+    }
+  });
+</script>
+</body>
+</html>

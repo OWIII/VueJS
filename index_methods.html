@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>VueJS</title>
+  <link rel="stylesheet" href="CSS/bootstrap.min.css">
+  <link rel="stylesheet" href="CSS/styles.css">
+  <script src="JS/vue.js"></script>
+</head>
+<body>
+<div class="wrapper">
+  <div class="sample">
+    <input type="text"
+           v-model="firstName">
+    <input type="text"
+           v-model="lastName">
+    <hr>
+    <h2> Hello, {{ fullName }} </h2>
+    <button class="btn btn-success"
+            v-on:click="showText = !showText">
+      ToggleText
+    </button>
+    <hr>
+      <div v-show="showText">Some Text</div>
+  </div>
+  <script>
+    let sample = new Vue({
+      el: '.sample',
+      data: {
+        firstName: '',
+        lastName: '',
+        showText: false
+      },
+      computed: {
+        fullName() {
+          return this.firstName + ' ' + this.lastName;
+        }
+      }
+    });
+  </script>
+</body>
+</html>
